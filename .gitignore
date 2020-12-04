@@ -34,3 +34,12 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+# The main .env file is used in all environments, and it would be better
+# to separate the needs of each
+.env
+
+# .env.*.local files are for storing real secrets when we need them in
+# development and testing and we would not want those stored in version
+# control
+.env.*.local
