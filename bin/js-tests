@@ -1,0 +1,4 @@
+set -e
+
+echo "[ bin/ci ] Running JavaScript unit tests"
+yarn jest --no-colors

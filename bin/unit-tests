@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -e
+
+echo "[ bin/ci ] Running Unit Tests"
+bin/rails test
