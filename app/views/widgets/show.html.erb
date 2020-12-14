@@ -1,5 +1,6 @@
 <div class="pa3">
-  <h1><%= @widget_presenter.name %></h1>
+  <h1>Widget Information</h1>
+  <h2 data-test-id="widget-name"><%= @widget_presenter.name %></h2>
   <h2>ID #<%= styled_widget_id(@widget_presenter.widget_id) %></h2>
 
   <% if flash[:notice].present? %>
