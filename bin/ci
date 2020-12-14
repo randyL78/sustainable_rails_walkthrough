@@ -3,7 +3,6 @@
 set -e
 
 bin/unit-tests
-# TODO uncomment next line once JavaScript is added to app.
-# bin/js-tests
+bin/js-tests
 bin/system-tests
 bin/security-audits

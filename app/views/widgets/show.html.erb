@@ -1,14 +1,16 @@
-<h1><%= @widget_presenter.name %></h1>
-<h2>ID #<%= styled_widget_id(@widget_presenter.widget_id) %></h2>
+<div class="pa3">
+  <h1><%= @widget_presenter.name %></h1>
+  <h2>ID #<%= styled_widget_id(@widget_presenter.widget_id) %></h2>
 
-<% if flash[:notice].present? %>
-  <aside>
-    <%= flash[:notice] %>
-  </aside>
-<% end %>
-<h3>
-  Built by <%= @widget_presenter.manufacturer.name %>
-  out of <%= @widget_presenter.manufacturer.address.country %>
-</h3>
+  <% if flash[:notice].present? %>
+    <aside>
+      <%= flash[:notice] %>
+    </aside>
+  <% end %>
+  <h3>
+    Built by <%= @widget_presenter.manufacturer.name %>
+    out of <%= @widget_presenter.manufacturer.address.country %>
+  </h3>
 
-<%= widget_rating_component(@widget_presenter) %>
+  <%= widget_rating_component(@widget_presenter) %>
+</div>

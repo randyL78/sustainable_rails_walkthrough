@@ -4,9 +4,19 @@
 // that code so it'll be compiled.
 
 require("@rails/ujs").start()
-require("turbolinks").start()
+
+const Turbolinks = require("turbolinks")
+
+Turbolinks.start();
+
+document.addEventListener("DOMContentLoaded", () => {
+    Turbolinks.setProgressBarDelay(100)
+})
+
 require("@rails/activestorage").start()
 require("channels")
+
+require("widget_ratings").start(window)
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
