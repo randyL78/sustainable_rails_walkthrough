@@ -8,7 +8,9 @@ Capybara.register_driver :root_headless_chrome do |app|
           },
           "goog:loggingPrefs": { browser: "ALL" }
       )
-end
+
+  Capybara::Selenium::Driver.new(app, browser: :chrome, desired_capabilities: capabilities)
+end # register driver
 
 require "support/with_clues"
 

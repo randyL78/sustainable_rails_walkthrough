@@ -47,8 +47,14 @@ def help
   log "  bin/rails test:system"
   log "    # run system tests"
   log ""
-  log "  bin/setup help"
-  log "    # show this help"
+  log "  bin/psql"
+  log "    # connect to the development database console"
+  log ""
+  log "  bin/db-migrate"
+  log "    # perform migrations for development and test databases"
+  log ""
+  log "  bin/db-rollback"
+  log "    # rollback development and test databases to previous schema"
   log ""
 end
 

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :widgets, only: [:show, :index]
+  resources :widgets, only: [:show, :index, :new, :create]
   resources :widget_ratings, only: [:create]
 
   namespace :customer_service do
