@@ -1,5 +1,17 @@
 class WidgetsController < ApplicationController
 
+  def new
+    @widget = Widget.new
+    @widget.errors[:name] << "can't be blank"
+    @widget.errors[:manufacturer_id] << "can't be blank"
+    @widget.errors[:price_cents] << "is not a number"
+    @manufacturers = Manufacturer.all
+  end
+
+  def create
+    render plain: "Thanks"
+  end
+
   def show
     manufacturer = OpenStruct.new(
       id: rand(100),
