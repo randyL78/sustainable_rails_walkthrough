@@ -2,6 +2,10 @@ require "application_system_test_case"
 
 class ViewWidgetTest < ApplicationSystemTestCase
   test "we can see a list of widgets and choose one to view" do
+    FactoryBot.create(:widget, name: "Flux Capacitor")
+    stembolt = FactoryBot.create(:widget, name: "Stembolt")
+    stembolt.update!(id: 1234)
+
     visit widgets_url
 
     widget_name = "stembolt"
@@ -15,7 +19,7 @@ class ViewWidgetTest < ApplicationSystemTestCase
     # remember 1234 is formatted as 12.34
     formatted_widget_id_regexp = /12\.34/
 
-    assert_selector "[data-test-id='widget-name']", text: widget_name_regexp
+    assert_selector "[data-testid='widget-name']", text: widget_name_regexp
     assert_selector "h2", text: formatted_widget_id_regexp
   end
 end

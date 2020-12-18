@@ -1,18 +1,19 @@
 class WidgetCreator
-  def initialize(notifier:)
-    @notifier = notifier
-  end
+  def create_widget(widget)
+    widget.widget_status = WidgetStatus.find_by!(name: "Fresh")
+    widget.save
 
-  def create_widget(widget_params)
-    widget = Widget.create(widget_params)
+    return Result.new(created: false, widget: widget) if widget.invalid?
 
-    if widget.valid?
-      @notifier.notify(:widget, widget.id)
-      # sales_tax_api.charge_tax(widget)
-      Result.new(created: true, widget: widget)
-    else
-      Result.new(created: false, widget: widget)
+    if widget.price_cents > 7_500_00
+      FinanceMailer.high_priced_widget(widget).deliver_now
     end
+
+    if widget.manufacturer.created_at.after?(60.days.ago)
+      AdminMailer.new_widget_from_new_manufacturer(widget).deliver_now
+    end
+
+    Result.new(created: widget.valid?, widget: widget)
   end
 
   class Result
@@ -26,9 +27,5 @@ class WidgetCreator
     def created?
       @created
     end
-  end
-
-  private def sales_tax_api
-    # @sales_tax_api = ThirdParty::Tax new
   end
 end
